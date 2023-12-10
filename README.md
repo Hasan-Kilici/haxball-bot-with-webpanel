@@ -1,26 +1,27 @@
 # haxball-bot-with-webpanel
 
 ### Nasıl çalıştırılır?
-ilk olarak klasçr içerisinde bot klasörünü açın ve .env dosyasını kendinize göre düzenleyin
+ilk olarak klasör içerisinde bot klasörünü açın ve .env dosyasını kendinize göre düzenleyin
 ```env
 TOKEN="token"
 JoinWebhook="discord webhookUrl"
 MessageWebhook="discord webhookUrl"
-```
-klasörü indirin ve terminalde açın
-botu çalıtırmak için sırayla şunları yazın
 
+```
+Klasörü indirin ve terminalde açın.
+Botu çalıtırmak için sırayla 
 ```sh
 cd bot
 node main.js
 ```
-web sitesini çalıştırmak içinse 2.bir terminal açın ve
+Komutlarını çalıştırın.
+
+Web sitesini çalıştırmak içinse 2.bir terminal açın ve
 ```sh
 cd frontend
 npm run dev
 ```
-
-yazın
+Komutlarını çalıştırın.
 
 
 ### Panelden görseller
