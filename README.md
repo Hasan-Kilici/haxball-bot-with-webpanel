@@ -1,7 +1,7 @@
 # haxball-bot-with-webpanel
 
 ### Nasıl çalıştırılır?
-İlk olarak klasörü indirin, klasör içerisinde bot klasörünü açın ve .env dosyasını aşağıdaki formatı takip ederek düzenleyin.
+İlk olarak klasörü indirin, bot klasörünü açın ve .env dosyasını aşağıdaki formatı takip ederek düzenleyin.
 ```env
 TOKEN="token"
 JoinWebhook="discord webhookUrl"
