@@ -22,12 +22,11 @@ require('dotenv').config();
 
 Haxball.then(async (HBInit) => {
   const room = HBInit({
-    roomName: "Hm",
+    roomName: "Sobet , Muhabbet, bot",
     maxPlayers: 16,
-    password:"deneme",
     public: true,
     noPlayer: true,
-    token: process.env.TOKEN
+    token: process.env.TOKEN,
   });
 
   fastify.register(management, {room});

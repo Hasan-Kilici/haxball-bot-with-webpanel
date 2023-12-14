@@ -1,0 +1,122 @@
+{
+        //GolMaps.blogspot.com//
+
+	"name" : "Huge Power - (GolMaps.blogspot.com)",
+
+	"width" : 800,
+
+	"height" : 350,
+
+	"spawnDistance" : 350,
+
+	"bg" : { "type" : "grass", "width" : 700, "height" : 320, "kickOffRadius" : 80, "cornerRadius" : 0 },
+
+	"vertexes" : [
+		/* 0 */ { "x" : -700, "y" : 320, "trait" : "ballArea" },
+		/* 1 */ { "x" : -700, "y" : 100, "trait" : "ballArea" },
+		/* 2 */ { "x" : -700, "y" : -100, "trait" : "ballArea" },
+		/* 3 */ { "x" : -700, "y" : -320, "trait" : "ballArea" },
+		/* 4 */ { "x" : 700, "y" : 320, "trait" : "ballArea" },
+		/* 5 */ { "x" : 700, "y" : 100, "trait" : "ballArea" },
+		/* 6 */ { "x" : 700, "y" : -100, "trait" : "ballArea" },
+		/* 7 */ { "x" : 700, "y" : -320, "trait" : "ballArea" },
+		
+		/* 8 */ { "x" : 0, "y" : 350, "trait" : "kickOffBarrier" },
+		/* 9 */ { "x" : 0, "y" : 80, "trait" : "kickOffBarrier" },
+		/* 10 */ { "x" : 0, "y" : -80, "trait" : "kickOffBarrier" },
+		/* 11 */ { "x" : 0, "y" : -350, "trait" : "kickOffBarrier" },
+		
+		/* 12 */ { "x" : -710, "y" : -100, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 13 */ { "x" : -730, "y" : -80, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 14 */ { "x" : -730, "y" : 80, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 15 */ { "x" : -710, "y" : 100, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 16 */ { "x" : 710, "y" : -100, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 17 */ { "x" : 730, "y" : -80, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 18 */ { "x" : 730, "y" : 80, "trait" : "goalNet", "color" : "1F1F1F" },
+		/* 19 */ { "x" : 710, "y" : 100, "trait" : "goalNet", "color" : "1F1F1F" },
+		
+		/* 20 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : -718.0069427490234, "y" : 97.49287414550781, "vis" : false },
+		/* 21 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : -718, "y" : 320, "vis" : false },
+		/* 22 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : 718.0069427490234, "y" : 97.49287414550781, "vis" : false },
+		/* 23 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : 718, "y" : 320, "vis" : false },
+		/* 24 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : -718.0069427490234, "y" : -97.49287414550781, "vis" : false },
+		/* 25 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : -718, "y" : -320, "vis" : false },
+		/* 26 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : 718.0069427490234, "y" : -97.49287414550781, "vis" : false },
+		/* 27 */ { "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "x" : 718, "y" : -320, "vis" : false }
+
+	],
+
+	"segments" : [
+		{ "v0" : 0, "v1" : 1, "trait" : "ballArea" },
+		{ "v0" : 2, "v1" : 3, "trait" : "ballArea" },
+		{ "v0" : 4, "v1" : 5, "trait" : "ballArea" },
+		{ "v0" : 6, "v1" : 7, "trait" : "ballArea" },
+		
+		{ "v0" : 12, "v1" : 13, "trait" : "goalNet", "curve" : -90, "color" : "1F1F1F" },
+		{ "v0" : 13, "v1" : 14, "trait" : "goalNet", "color" : "1F1F1F" },
+		{ "v0" : 14, "v1" : 15, "trait" : "goalNet", "curve" : -90, "color" : "1F1F1F" },
+		{ "v0" : 16, "v1" : 17, "trait" : "goalNet", "curve" : 90, "color" : "1F1F1F" },
+		{ "v0" : 17, "v1" : 18, "trait" : "goalNet", "color" : "1F1F1F" },
+		{ "v0" : 18, "v1" : 19, "trait" : "goalNet", "curve" : 90, "color" : "1F1F1F" },
+		
+		{ "v0" : 8, "v1" : 9, "trait" : "kickOffBarrier" },
+		{ "v0" : 9, "v1" : 10, "trait" : "kickOffBarrier", "curve" : 180, "cGroup" : ["blueKO" ] },
+		{ "v0" : 9, "v1" : 10, "trait" : "kickOffBarrier", "curve" : -180, "cGroup" : ["redKO" ] },
+		{ "v0" : 10, "v1" : 11, "trait" : "kickOffBarrier" },
+		
+		{ "curve" : 0, "vis" : false, "color" : "1F1F1F", "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "v0" : 20, "v1" : 21 },
+		{ "curve" : 0, "vis" : false, "color" : "1F1F1F", "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "v0" : 22, "v1" : 23 },
+		{ "curve" : 0, "vis" : false, "color" : "1F1F1F", "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "v0" : 24, "v1" : 25 },
+		{ "curve" : 0, "vis" : false, "color" : "1F1F1F", "bCoef" : 1.2, "cMask" : ["ball" ], "trait" : "goalPost", "v0" : 26, "v1" : 27 }
+
+	],
+
+	"goals" : [
+		{ "p0" : [-700,-100 ], "p1" : [-700,100 ], "team" : "red" },
+		{ "p0" : [700,100 ], "p1" : [700,-100 ], "team" : "blue" }
+
+	],
+
+	"discs" : [
+		{ "pos" : [-700,100 ], "trait" : "goalPost", "color" : "F7F7F7" },
+		{ "pos" : [-700,-100 ], "trait" : "goalPost", "color" : "F7F7F7" },
+		{ "pos" : [700,100 ], "trait" : "goalPost", "color" : "F7F7F7" },
+		{ "pos" : [700,-100 ], "trait" : "goalPost", "color" : "F7F7F7" }
+
+	],
+
+	"planes" : [
+		{ "normal" : [0,1 ], "dist" : -320, "trait" : "ballArea" },
+		{ "normal" : [0,-1 ], "dist" : -320, "trait" : "ballArea" },
+		
+		{ "normal" : [0,1 ], "dist" : -350, "bCoef" : 0.1 },
+		{ "normal" : [0,-1 ], "dist" : -350, "bCoef" : 0.1 },
+		{ "normal" : [1,0 ], "dist" : -800, "bCoef" : 0.1 },
+		{ "normal" : [-1,0 ], "dist" : -800, "bCoef" : 0.1 }
+
+	],
+
+	"traits" : {
+		"ballArea" : { "vis" : false, "bCoef" : 1, "cMask" : ["ball" ] },
+		"goalPost" : { "radius" : 8, "invMass" : 0, "bCoef" : 0.5 },
+		"goalNet" : { "vis" : true, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		"kickOffBarrier" : { "vis" : false, "bCoef" : 0.1, "cGroup" : ["redKO","blueKO" ], "cMask" : ["red","blue" ] }
+
+	},
+
+	"ballPhysics" : {
+		"color" : "1EFA64"
+
+	},
+
+	"playerPhysics" : {
+		"bCoef" : 0.4,
+		"invMass" : 0.5,
+		"damping" : 0.96,
+		"acceleration" : 0.14,
+		"kickingAcceleration" : 0.1,
+		"kickingDamping" : 0.96,
+		"kickStrength" : 14
+
+	}
+}

@@ -8,6 +8,8 @@ let penalty = fs.readFileSync("./maps/penalto2.hbs");
 let sniper = fs.readFileSync("./maps/sniper.hbs");
 let sumopower = fs.readFileSync("./maps/sumopower.hbs");
 let voleybol = fs.readFileSync("./maps/voleybol.hbs");
+let powerBig = fs.readFileSync("./maps/big-power.hbs");
+let powerHuge = fs.readFileSync("./maps/power-huge.hbs");
 
 let map;
 
@@ -16,12 +18,18 @@ module.exports = {
         let command = message.split(" ")
             if (await player.admin) {
                 room.stopGame();
-                map = command[1];
                 switch (command[1]) {
                     case "power":
                         room.setScoreLimit(5);
                         room.setTimeLimit(0);
-                        room.setCustomStadium(power);
+                        let users = room.getPlayerList()
+                        if(users.length > 6 && users.length < 8){
+                            room.setCustomStadium(powerBig);
+                        } else if (users.length > 8 ) {
+                            room.setCustomStadium(powerHuge);
+                        } else {
+                            room.setCustomStadium(power);
+                        }
                         break;
                     case "parkour":
                         room.setScoreLimit(1);
@@ -56,6 +64,7 @@ module.exports = {
                     default:
                         return false;
                 }
+                map = command[1];
                 room.sendAnnouncement(`Harita değiştirildi, yeni map : ${command[1]}`, null, 0x00ff00, "bold")
                 room.startGame();
                 tick.changeMap(command[1])

@@ -1,3 +1,8 @@
+const fs = require("node:fs")
+let power = fs.readFileSync("./maps/power.hbs");
+let powerBig = fs.readFileSync("./maps/big-power.hbs");
+let powerHuge = fs.readFileSync("./maps/power-huge.hbs");
+let changeMap = true;
 module.exports = (player,room)=>{
     room.setPlayerDiscProperties(player.id, {
       radius: 20,
@@ -16,6 +21,7 @@ module.exports = (player,room)=>{
     }
   
     room.sendAnnouncement(`Hoş geldin ${playerName}`);
+  
       let redTeamPlayers = players.filter(p => p.team === 1);
       let blueTeamPlayers = players.filter(p => p.team === 2);
     
@@ -36,5 +42,18 @@ module.exports = (player,room)=>{
           room.setPlayerTeam(player.id, 1);
         }
       }
+
+      if(players.length >= 6 && players.length < 8){
+        room.stopGame()
+        room.setCustomStadium(powerBig);
+        room.startGame()
+      } else if (players.length > 8 ) {
+        if(changeMap){
+          room.stopGame()
+          room.setCustomStadium(powerHuge);
+          room.startGame()
+          changeMap = false;
+        }
+      } 
     room.startGame();
 }

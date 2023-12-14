@@ -71,8 +71,17 @@ async function routes (fastify, options) {
     fastify.get("/mute/player", async (request, reply)=>{
         return {user: Player.mute(request.query.name, Number(request.query.delay))}
     })
+
     fastify.get("/change/map", async (request, reply)=>{
         return {map : map.change({id:1,name:"bot",admin:true,},`!map ${request.query.map}`, room)}   
+    })
+
+    fastify.get("/freeze", async (request, reply)=>{
+        return {user: Player.freeze(request.query.name)}
+    })
+
+    fastify.get("/unfreeze", async (request, reply)=>{
+        return {user: Player.unfreeze(request.query.name)}
     })
   }
   

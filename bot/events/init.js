@@ -1,11 +1,23 @@
 const fs = require("node:fs")
-
+let roomInfo
 const goalEvent = require("../events/goal.js")
 const join = require("../events/join.js")
 const messageEvent = require("../events/message.js")
 const webhook = require("../webhook/discord.js")
 const tick = require("../events/tick.js")
 let playerList = {}
+
+function freeze(name){
+    let users = roomInfo.getPlayerList()
+    let freeze = users.find((p) => p.id == playerList[name].id)
+    playerList[name].frozen = true;
+    playerList[name].frozenX = freeze.position.x;
+    playerList[name].frozenY = freeze.position.y;
+}
+
+function unfreeze(name){
+    playerList[name].frozen = false;
+}
 
 function mute(name, delay){
     if (playerList[name]) {
@@ -20,6 +32,7 @@ function mute(name, delay){
 
 module.exports = {
     init: async (room)=>{
+        roomInfo = room
         let power = await fs.readFileSync("./maps/power.hbs")
         let lastPlayersTouched
 
@@ -38,7 +51,7 @@ module.exports = {
         room.onPlayerJoin = (player) => {
             join(player,room)
             if(!playerList[player.name]){
-                playerList[player.name] = {name: player.name, messageDates: [], muted: false, spamInMute: 0, admin:false, id:player.id};
+                playerList[player.name] = {name: player.name, messageDates: [], muted: false, spamInMute: 0, admin:false, id:player.id, frozenX : null, frozenY: null, beFaste: false};
             }
             webhook.JoinLeaveLog(`${player.name} Sunucuya giriş yaptı Kullanıcı ID'si ${player.id}`)
         }
@@ -49,7 +62,7 @@ module.exports = {
         }
 
         room.onPlayerChat = (player, message) => {
-            messageEvent(player,message,room, mute, playerList)
+            messageEvent(player,message,room, mute, playerList, freeze, unfreeze)
             webhook.MessageLog(`${player.name} : ${message}`)
             return false
         }
@@ -59,7 +72,7 @@ module.exports = {
         }
 
         room.onGameTick = ()=>{
-            tick.init(room)
+            tick.init(room,playerList)
         }
 
         room.onPlayerBallKick = (player)=>{
@@ -84,5 +97,11 @@ module.exports = {
     },
     mute : (name, delay)=>{
         mute(name, delay)
+    },
+    freeze: (name) => {
+        freeze(name)
+    }, 
+    unfreeze: (name) => {
+        unfreeze(name)
     }
 }
