@@ -27,5 +27,10 @@ Komutlarını çalıştırın.
 - Kullanıcıyı büyütme/ışınlama/hızlandırma/durdurma/susturma/banlama/kickleme
 - Haritaların özel mekanikleri (dodgeball/hırsız polis/power/futsal)
 
+### Kullanılan Teknolojiler
+Backend : Fastify
+Haxball Headless : haxball.js
+Frontend : Sveltekit
+
 ### Panelden görseller
 ![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/86d56eb9-ad42-405e-9f73-4f58a722241a)
