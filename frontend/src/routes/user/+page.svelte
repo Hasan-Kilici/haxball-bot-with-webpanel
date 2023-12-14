@@ -44,6 +44,14 @@
         const setUniform = await fetch(`http://localhost:3000/sendMessage?message=${message}`)
     }
 
+    async function freeze(){
+        await fetch(`http://localhost:3000/freeze?name=${$page.url.searchParams.get('name')}`)
+    }
+
+    async function unfreeze(){
+        await fetch(`http://localhost:3000/unfreeze?name=${$page.url.searchParams.get('name')}`)
+    }
+
     async function muteUser(){
         let time = 0;
 
@@ -90,7 +98,7 @@
             color1:"000",
             color2:"FF8C00",
             color3:"ffffff",
-        }
+        }, 
     ]
 </script>
 <div class="container mx-auto">
@@ -107,6 +115,8 @@
                 <button on:click={()=>{setTeam("blue")}}>Mavi Takıma gönder</button>
                 <button on:click={()=>{setTeam("red")}}>Kırmızı Takıma gönder</button>
                 <button on:click={()=>{setTeam("spec")}}>İzleyicilere At</button>
+                <button on:click={freeze}>Dondur</button>
+                <button on:click={unfreeze}>Dondurmayı kaldır</button>
         </div>
     </div>
     <div class="card p-6 mt-5">
