@@ -22,7 +22,10 @@ npm run dev
 Komutlarını çalıştırın.
 
 
-### Panelden görseller
-![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/39236e00-1ad3-47bf-b039-ba4cf722384b)
-![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/d9cdf9c5-c1fc-42db-a817-236a9d94fa5b)
+### İçindekiler
+- Harita değiştirme
+- Kullanıcıyı büyütme/ışınlama/hızlandırma/durdurma/susturma/banlama/kickleme
+- Haritaların özel mekanikleri (dodgeball/hırsız polis/power/futsal)
 
+### Panelden görseller
+![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/86d56eb9-ad42-405e-9f73-4f58a722241a)
