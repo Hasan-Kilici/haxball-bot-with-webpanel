@@ -123,7 +123,7 @@
         }, 
     ]
 </script>
-{url}
+
 
 <div class="container mx-auto">
     <center><h2 class="text-6xl mt-5 mb-5">{$page.params.name}</h2></center>
