@@ -23,6 +23,8 @@
   },
   "type": "module",
   "dependencies": {
+    "js-cookie": "^3.0.5",
+    "localStorage": "^1.0.4",
     "svelte-leafletjs": "^0.10.0"
   }
 }

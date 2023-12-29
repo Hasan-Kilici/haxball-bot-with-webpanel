@@ -19,6 +19,11 @@
 </script>
 
 <AppRail background="bg-surface-800" active="none" width="w-[10%]" height="h-[100vh] fixed">
+    <a href="/replays">
+    <AppRailTile href="/replays">
+        Oyun Tekrarları
+    </AppRailTile>
+    </a>
     {#each users as user}
     <a href="/user/{user.id}/{user.team}/{user.admin}/{user.name}">
     <AppRailTile  href="/user/{user.id}">

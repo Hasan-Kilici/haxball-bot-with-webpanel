@@ -1,14 +1,26 @@
 <script>
     import {page} from "$app/stores"
     import { onMount } from "svelte";
-
+    import {storable} from "$lib/storable.js";
+    import {getTimeToText} from "$lib/utils.js"
+    
     onMount(()=>{
         const thisPage = window.location.pathname;
         goto(thisPage);
     })
 
-    let url = $page.params.id;
+    let uniform;
+    let storageUniforms = storable("uniforms", null);
+    let uniforms = [{name:"GALATASARAY",color1: "000",color2: "ff0000",color3: "ffff00"},{name:"FENERBAHÇE",color1: "000",color2: "ffff00",color3: "0000ff"},{name:"BEŞIKTAŞ",color1: "ff0000",color2: "000000",color3: "ffffff"},{name:"ADANA DEMIR SPOR",color1:"000",color2:"FF8C00",color3:"ffffff",}, ];
+    storageUniforms.subscribe(value => uniform = value);
+
+    if(!uniform){
+        storageUniforms.set(uniforms)
+    }
+
+    let date = new Date();
     let userInfo = getUserInfo()
+    let userValue = getUser()
 
     async function getUserInfo () {
         const response = await fetch(`http://localhost:3000/user?name=${$page.params.name}`);
@@ -20,6 +32,18 @@
         return ipData
     }
 
+    async function getUser(){
+        const response = await fetch(`http://localhost:3000/user?name=${$page.params.name}`);
+        const data = await response.json();
+
+        return data;
+    }
+
+    let reason;
+    let uniformname;
+    let color1;
+    let color2;
+    let color3;
     let address;
     let radius;
     let avatar;
@@ -97,36 +121,29 @@
     async function changeMap(){
         const maps = await fetch(`http://localhost:3000/change/map?map=${map}`)
     }
-    let uniforms = [
-        {
-            name:"GALATASARAY",
-            color1: "000",
-            color2: "ff0000",
-            color3: "ffff00"
-        },
-        {
-            name:"FENERBAHÇE",
-            color1: "000",
-            color2: "ffff00",
-            color3: "0000ff"
-        },
-        {
-            name:"BEŞIKTAŞ",
-            color1: "ff0000",
-            color2: "000000",
-            color3: "ffffff"
-        },{
-            name:"ADANA DEMIR SPOR",
-            color1:"000",
-            color2:"FF8C00",
-            color3:"ffffff",
-        }, 
-    ]
+
+    async function addUniform(){
+        uniforms.push({name:uniformname, color1:color1, color2:color2, color3:color3});
+        uniforms = uniforms
+        storageUniforms.set(uniforms)
+    }
+
 </script>
 
 
 <div class="container mx-auto">
-    <center><h2 class="text-6xl mt-5 mb-5">{$page.params.name}</h2></center>
+    <center><h2 class="text-6xl mt-5 mb-5">{$page.params.name}</h2>
+    {#await userValue}
+        <p>...</p>
+    {:then user}
+        {#if !user.user.leaveDate}
+            {getTimeToText(date.getTime() - user.user.registeredDate)}
+        {:else}
+            {user.user.leaveDate - user.user.registeredDate}
+        {/if}
+    {:catch}
+        <p>Hata</p>
+    {/await}</center>
     <div class=" flex justify-center items-center">
         <div class="btn-group variant-filled">
         
@@ -141,6 +158,8 @@
                 <button on:click={()=>{setTeam("spec")}}>İzleyicilere At</button>
                 <button on:click={freeze}>Dondur</button>
                 <button on:click={unfreeze}>Dondurmayı kaldır</button>
+                <button on:click={async ()=>{await fetch(`http://localhost:3000/stop-game`)}}>Oyunu Dondur</button>
+                <button on:click={async ()=>{await fetch(`http://localhost:3000/start-game`)}}>Oyunu Başlat</button>
         </div>
     </div>
 
@@ -198,15 +217,30 @@
     </div>
     <button type="button" class="btn variant-filled mt-5" on:click={muteUser}>Sustur</button>
 </div>
+
+<div class="card p-6 mt-5">
+    <span>Forma Ekle</span>
+    <input class="input p-2 mt-5" type="text" placeholder="forma adı" bind:value={uniformname} />
+    <input class="input p-2 mt-5" type="text" placeholder="Yazı Renk kodu" bind:value={color1}/>
+    <input class="input p-2 mt-5" type="text" placeholder="1.Renk kodu" bind:value={color2}/>
+    <input class="input p-2 mt-5" type="text" placeholder="2.Renk kodu" bind:value={color3}/>
+    <button type="button" class="btn variant-filled mt-5" on:click={addUniform}>Güncelle</button>
+</div>
+<div class="card p-6 mt-5">
+    <span>Kara listeye al</span>
+    <input class="input p-2 mt-5" type="text" placeholder="Kara listeye alınma sebebi" bind:value={reason}/>
+    <button type="button" class="btn variant-filled mt-5" on:click={async ()=>{await fetch(`http://localhost:3000/add-blacklist?name=${$page.params.name}&reason=${reason}`)}}>Gönder</button>
+</div>
+
     <h1 class="text-3xl">Formalar</h1>
-    <div class="flex wrap gap-2">
-        {#each uniforms as uniform}
-            <div on:click={()=>{setUniform(uniform.color1,uniform.color2,uniform.color3)}} class="card mt-3 w-[75px] flex items-center justify-center py-3">
+    <div class="container flex wrap gap-2">
+        {#each uniform as uniforms}
+            <div on:click={()=>{setUniform(uniforms.color1,uniforms.color2,uniforms.color3)}} class="card mt-3 w-[75px] flex items-center justify-center py-3">
                 <div class="rounded-full overflow-hidden flex w-[50px] h-[50px]">
-                    <div class="w-[25px] h-[50px]" style="background:#{uniform.color2}">
+                    <div class="w-[25px] h-[50px]" style="background:#{uniforms.color2}">
 
                     </div>
-                    <div class="w-[25px] h-[50px]" style="background:#{uniform.color3}">
+                    <div class="w-[25px] h-[50px]" style="background:#{uniforms.color3}">
                       
                     </div>
                 </div>
