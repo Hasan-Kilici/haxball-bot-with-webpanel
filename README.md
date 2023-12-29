@@ -33,7 +33,8 @@ Haxball Headless : haxball.js
 Frontend : Sveltekit
 
 ### Panelden görseller
-![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/e9bc7329-3c1f-4aa1-bb79-e949dca40734)
+![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/fbec2c53-d484-48b2-96a5-5b039e9adfe5)
+
 
 ![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/6db66412-66d9-4d9c-bf2d-21cebe292963)
 
