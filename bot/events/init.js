@@ -10,6 +10,8 @@ const Snowflake = require("../utils/snowflake.js");
 const map = require("../commands/map.js");
 const dataset = require("csv-database");
 
+require('dotenv').config();
+
 let replay = [];
 
 let playerList = {};
@@ -166,8 +168,8 @@ module.exports = {
             
             fetch("https://replay.thehax.pl/api/upload", {
                 "headers": {
-                    "API-Tenant": "ut_ee76a5a693a17758a8cf56734fde5038", 
-                    "API-Key": "ukt_36fa40ea4e4103f919e2ca9945a951ba" 
+                    "API-Tenant": process.env.TheHaxTenant, 
+                    "API-Key": process.env.TheHaxAPIKey
                 },
                 "method": "POST",
                 "body": formData
