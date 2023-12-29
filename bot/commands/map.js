@@ -21,13 +21,13 @@ module.exports = {
     change: async (player, message, room)=>{
         let command = message.split(" ")
             if (await player.admin) {
+                let users = room.getPlayerList()
                 room.stopGame();
                 switch (command[1]) {
                     case "power":
                         room.setScoreLimit(5);
                         room.setTimeLimit(0);
-                        let user = room.getPlayerList()
-                        if(user.length > 6 && users.length < 8){
+                        if(users.length > 6 && users.length < 8){
                             room.setCustomStadium(powerBig);
                         } else if (users.length > 8 ) {
                             room.setCustomStadium(powerHuge);
@@ -38,7 +38,6 @@ module.exports = {
                     case "futsal":
                         room.setScoreLimit(5);
                         room.setTimeLimit(0);
-                        let users = room.getPlayerList()
                         if(users.length > 6 && users.length < 8){
                             room.setCustomStadium(futsalBig);
                         } else {
