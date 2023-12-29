@@ -1,5 +1,5 @@
-const commandsInıt = require("../commands/init.js")
+const commandsInit = require("../commands/init.js")
 
 module.exports = async (player, message, room, mute, playerList, freeze, unfreeze) => {
-    commandsInıt(player,message,room,mute,playerList,freeze,unfreeze)
+    commandsInit(player,message,room,mute,playerList,freeze,unfreeze)
 };

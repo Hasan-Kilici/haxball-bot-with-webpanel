@@ -10,8 +10,12 @@ let sumopower = fs.readFileSync("./maps/sumopower.hbs");
 let voleybol = fs.readFileSync("./maps/voleybol.hbs");
 let powerBig = fs.readFileSync("./maps/big-power.hbs");
 let powerHuge = fs.readFileSync("./maps/power-huge.hbs");
+let futsal = fs.readFileSync("./maps/futsal.hbs");
+let futsalBig = fs.readFileSync("./maps/futsal3v3.hbs");
 
 let map;
+
+let maps = ["power","futsal","parkour","dodgeball","penalty","sniper","sumopower","voleybol"]
 
 module.exports = { 
     change: async (player, message, room)=>{
@@ -22,45 +26,55 @@ module.exports = {
                     case "power":
                         room.setScoreLimit(5);
                         room.setTimeLimit(0);
-                        let users = room.getPlayerList()
-                        if(users.length > 6 && users.length < 8){
+                        let user = room.getPlayerList()
+                        if(user.length > 6 && users.length < 8){
                             room.setCustomStadium(powerBig);
                         } else if (users.length > 8 ) {
                             room.setCustomStadium(powerHuge);
                         } else {
                             room.setCustomStadium(power);
                         }
-                        break;
+                    break;
+                    case "futsal":
+                        room.setScoreLimit(5);
+                        room.setTimeLimit(0);
+                        let users = room.getPlayerList()
+                        if(users.length > 6 && users.length < 8){
+                            room.setCustomStadium(futsalBig);
+                        } else {
+                            room.setCustomStadium(futsal);
+                        }
+                    break;
                     case "parkour":
                         room.setScoreLimit(1);
                         room.setTimeLimit(0);
                         room.setCustomStadium(parkour);
-                        break;
+                    break;
                     case "dodgeball":
                         room.setScoreLimit(0);
                         room.setTimeLimit(0);
                         room.setCustomStadium(dodgeball);
-                        break;
+                    break;
                     case "penalty":
                         room.setScoreLimit(5);
                         room.setTimeLimit(0);
                         room.setCustomStadium(penalty);
-                        break;
+                    break;
                     case "sniper":
                         room.setScoreLimit(3);
                         room.setTimeLimit(1);
                         room.setCustomStadium(sniper);
-                        break;
+                    break;
                     case "sumopower":
                         room.setScoreLimit(10);
                         room.setTimeLimit(0);
                         room.setCustomStadium(sumopower);
-                        break;
+                    break;
                     case "voleybol":
                         room.setScoreLimit(12);
                         room.setTimeLimit(0);
                         room.setCustomStadium(voleybol);
-                        break;
+                    break;
                     default:
                         return false;
                 }
@@ -75,5 +89,8 @@ module.exports = {
     },
     get : ()=>{
         return map
+    },
+    list : ()=>{
+        return maps
     }
 }

@@ -3,6 +3,8 @@ let power = fs.readFileSync("./maps/power.hbs");
 let powerBig = fs.readFileSync("./maps/big-power.hbs");
 let powerHuge = fs.readFileSync("./maps/power-huge.hbs");
 let changeMap = true;
+
+
 module.exports = (player,room)=>{
     room.setPlayerDiscProperties(player.id, {
       radius: 20,

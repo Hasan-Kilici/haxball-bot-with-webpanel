@@ -22,9 +22,9 @@ require('dotenv').config();
 
 Haxball.then(async (HBInit) => {
   const room = HBInit({
-    roomName: "Sobet , Muhabbet, bot",
+    roomName: "testing",
     maxPlayers: 16,
-    public: true,
+    public: false,
     noPlayer: true,
     token: process.env.TOKEN,
   });
