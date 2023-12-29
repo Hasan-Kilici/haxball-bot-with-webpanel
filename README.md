@@ -38,3 +38,4 @@ Frontend : Sveltekit
 
 ![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/6db66412-66d9-4d9c-bf2d-21cebe292963)
 
+![image](https://github.com/Hasan-Kilici/haxball-bot-with-webpanel/assets/105741983/43962501-23bb-47c9-aedc-15e3c9ab7602)
