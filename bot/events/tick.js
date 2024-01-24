@@ -8,9 +8,11 @@ module.exports = {
     init : (room, playerList)=>{
         let users = room.getPlayerList()
         for(let i = 0;i < users.length;i++){
+            if(users[i].team !== 0){
             let user = playerList[users[i].name]
-            if(user.frozen){
-                room.setPlayerDiscProperties(user.id,{x:user.frozenX,y:user.frozenY,xspeed:0,yspeed:0});
+                if(user.frozen){
+                    room.setPlayerDiscProperties(user.id,{x:user.frozenX,y:user.frozenY,xspeed:0,yspeed:0});
+                }
             }
         }
 

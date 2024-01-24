@@ -1,0 +1,95 @@
+{
+
+	"name" : "Survival Room | Leo",
+
+	"width" : 420,
+
+	"height" : 300,
+
+	"spawnDistance" : 150,
+
+	"bg" : { "type" : "hockey", "width" : 0, "height" : 0, "kickOffRadius" : 0, "cornerRadius" : 0 },
+
+	"vertexes" : [
+		/* 0 */ { "x" : -307, "y" : -306, "bCoef" : 99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 1 */ { "x" : -307, "y" : 306, "bCoef" : 99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 2 */ { "x" : -298, "y" : 298, "bCoef" : -99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 3 */ { "x" : -298, "y" : -298, "bCoef" : -99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 4 */ { "x" : 307, "y" : -306, "bCoef" : 99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 5 */ { "x" : 307, "y" : 306, "bCoef" : 99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 6 */ { "x" : 298, "y" : 298, "bCoef" : -99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 7 */ { "x" : 298, "y" : -298, "bCoef" : -99999999, "cMask" : ["red","blue" ], "vis" : true },
+		/* 8 */ { "x" : -75, "y" : 0, "bCoef" : 0, "cMask" : ["wall" ], "cGroup" : ["red","blue" ] },
+		/* 9 */ { "x" : 75, "y" : 0, "bCoef" : 0, "cMask" : ["wall" ], "cGroup" : ["red","blue" ] },
+		/* 10 */ { "x" : 0, "y" : -75, "bCoef" : 0, "cMask" : ["wall" ], "cGroup" : ["red","blue" ] },
+		/* 11 */ { "x" : 0, "y" : 75, "bCoef" : 0, "cMask" : ["wall" ], "cGroup" : ["red","blue" ] },
+		/* 12 */ { "x" : 0, "y" : 298.1, "bCoef" : -99999999, "cMask" : ["ball" ] },
+		/* 13 */ { "x" : 0, "y" : -298.1, "bCoef" : -99999999, "cMask" : ["ball" ], "_selected" : true }
+
+	],
+
+	"segments" : [
+		{ "v0" : 0, "v1" : 1, "vis" : true, "bCoef" : 99999999, "cMask" : ["red","blue" ], "trait" : "ballArea", "x" : -307 },
+		{ "v0" : 2, "v1" : 3, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ], "trait" : "ballArea", "x" : -298 },
+		{ "v0" : 4, "v1" : 5, "vis" : true, "bCoef" : 99999999, "cMask" : ["red","blue" ], "trait" : "ballArea", "x" : 307 },
+		{ "v0" : 6, "v1" : 7, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ], "trait" : "ballArea", "x" : 298 },
+		{ "v0" : 5, "v1" : 1, "vis" : true, "bCoef" : 99999999, "cMask" : ["red","blue" ], "trait" : "ballArea" },
+		{ "v0" : 0, "v1" : 4, "vis" : true, "bCoef" : 99999999, "cMask" : ["red","blue" ], "trait" : "ballArea" },
+		
+		{ "v0" : 3, "v1" : 13, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ] },
+		{ "v0" : 13, "v1" : 7, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ] },
+		{ "v0" : 2, "v1" : 12, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ] },
+		{ "v0" : 12, "v1" : 6, "vis" : true, "bCoef" : -99999999, "cMask" : ["red","blue" ] }
+
+	],
+
+	"goals" : [
+		
+
+	],
+
+	"discs" : [
+		{ "pos" : [0,8430 ], "trait" : "border", "speed" : [0,-0.1 ] },
+		{ "pos" : [0,-8430 ], "trait" : "border", "speed" : [0,0.1 ] },
+		{ "pos" : [-8430,0 ], "trait" : "border", "speed" : [0.1,0 ] },
+		{ "pos" : [8430,0 ], "trait" : "border", "speed" : [-0.1,0 ] }
+
+	],
+
+	"planes" : [
+		{ "normal" : [-1,0 ], "dist" : -18000, "bCoef" : 0, "cMask" : ["red","blue" ] },
+		{ "normal" : [1,0 ], "dist" : -18000, "bCoef" : 0, "cMask" : ["red","blue" ] },
+		{ "normal" : [0,1 ], "dist" : -340, "bCoef" : 0, "cMask" : ["red","blue" ] },
+		{ "normal" : [0,-1 ], "dist" : -340, "bCoef" : 0, "cMask" : ["red","blue" ] }
+
+	],
+
+	"traits" : {
+		"ballArea" : { "vis" : false, "bCoef" : 1, "cMask" : ["ball" ] },
+		"goalPost" : { "radius" : 8, "invMass" : 0, "bCoef" : 0.5 },
+		"pusher" : { "radius" : 8, "invMass" : 0, "bCoef" : 0.5 },
+		"border" : { "radius" : 8000, "invMass" : 1e-307, "damping" : 1, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "000000", "bCoef" : 99999999 },
+		"goalNet" : { "vis" : true, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		"kickOffBarrier" : { "vis" : false, "bCoef" : 0.1, "cGroup" : ["redKO","blueKO" ], "cMask" : ["red","blue" ] }
+
+	},
+
+	"playerPhysics" : {
+		"kickStrength" : 0,
+		"bCoef" : 1.4,
+		"acceleration" : 0.03,
+		"kickingAcceleration" : 0.03,
+		"kickingDamping" : 0.99,
+		"damping" : 0.99,
+		"invMass" : 1e+307
+
+	},
+
+	"ballPhysics" : {
+		"radius" : 0,
+		"invMass" : 0,
+		"cMask" : [ ""
+		]
+
+	}
+}
