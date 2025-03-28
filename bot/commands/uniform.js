@@ -11,9 +11,6 @@ module.exports = (player,message,room)=>{
             case "porno":
                 room.setTeamColors(player.team, 90, 0xFFFFFF, [0x000000, 0xFF8000]);
             break;
-            case "kürdistan":
-                room.setTeamColors(player.team, 90, 0xFFE600, [0x00BA32, 0xFFFFFF, 0xC90000]);
-            break;
             case "yemekvarmi":
                 room.setTeamColors(player.team, 90, 0x000000, [0x00BA32, 0xDFBAFF]);
             default : 
